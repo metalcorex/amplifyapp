@@ -6,7 +6,7 @@ import { listNotes } from './graphql/queries';
 import { createNote as createNoteMutation, deleteNote as deleteNoteMutation } from './graphql/mutations';
 
 
-const initialFormState = { name: '', description: '' }
+const initialFormState = { name: '', description: '', image: null }
 
 function App() {
   const [notes, setNotes] = useState([]);
@@ -78,10 +78,10 @@ function App() {
           <div key={note.id || note.name}>
             <h2>{note.name}</h2>
             <p>{note.description}</p>
-            <button onClick={() => deleteNote(note)}>Delete note</button>
             {
-              note.image && <img src={note.image} style={{width: 400}} />
+              note.image && <p><img src={note.image} style={{width: 400}} /></p>
             }
+            <button onClick={() => deleteNote(note)}>Delete note</button>
           </div>
         ))
       }
